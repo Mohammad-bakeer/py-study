@@ -1,1 +1,1 @@
-clear() to clear the terminal , it seems like we need to edit this
+clear() to clear the terminal , from replit import clear
