@@ -1,1 +1,1 @@
-clear() to clear the terminal 
+clear() to clear the terminal , it seems like we need to edit this
