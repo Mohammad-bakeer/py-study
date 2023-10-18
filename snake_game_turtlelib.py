@@ -10,7 +10,7 @@ screen.title("snake game")
 screen.tracer(0)
 
 snake = Snake()
-#Sanke listner 
+
 screen.listen()
 screen.onkey(snake.up,"Up")
 screen.onkey(snake.down,"Down")
