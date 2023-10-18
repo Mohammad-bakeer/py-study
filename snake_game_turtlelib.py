@@ -7,11 +7,13 @@ screen.setup(width=600, height=600)
 screen.title("snake game")
 
 #building up the snake
+segments = []
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 for pos in starting_positions:
     new_segment = Turtle(shape="square")
     new_segment.color("white")
     new_segment.goto(pos)
+    segments.append(new_segment)
 
 
 
