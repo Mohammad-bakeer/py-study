@@ -14,8 +14,8 @@ class Paddel(Turtle):
         
 
     def paddel_up(self):
-        self.forward(30)
+        self.forward(40)
 
 
     def paddel_down(self):
-        self.forward(-30)
+        self.forward(-40)
