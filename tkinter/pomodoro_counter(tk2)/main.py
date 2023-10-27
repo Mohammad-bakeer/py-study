@@ -13,13 +13,8 @@ BT_FONT = (FONT_NAME, 12, "bold")
 reps = 0
 timer = None
 marks = ""
+
 # ---------------------------- TIMER RESET ------------------------------- #
-
-# ---------------------------- TIMER MECHANISM ------------------------------- #
-
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
-
-
 def reset_timer():
     global reps
     window.after_cancel(timer)
@@ -28,9 +23,7 @@ def reset_timer():
     canvas.itemconfig(text_timer, text="00:00")
     reps=0
     
-
-    
-
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def strat_timer():
     global reps 
     reps +=1
@@ -48,9 +41,7 @@ def strat_timer():
         timer_label.config(text="work", fg=GREEN)
         count_down(2)
 
-
-
-
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
     count_min = math.floor(count/60)
     count_sec = count % 60
