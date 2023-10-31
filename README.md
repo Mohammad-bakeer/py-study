@@ -1,3 +1,3 @@
 # py-study
-private repository  
+private repository for studying
 
