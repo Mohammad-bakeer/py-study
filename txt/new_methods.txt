@@ -1,1 +1,2 @@
 clear() to clear the terminal , from replit import clear
+pyperclip.copy(), function to copy strings to the clipboard
