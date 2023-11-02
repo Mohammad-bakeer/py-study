@@ -60,12 +60,18 @@ def add():
 # ---------------------------- Search ------------------------------- #            
 def find_password():
     website = w_entry.get()
-    with open("password_manager/data.json") as data_file:
-        data = json.load(data_file)
+    try:
+        with open("password_manager/data.json") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="files doesnt exist")
+    else:
         if website in data:
             email = data[website]["username/email"]
             password = data[website]["password"]
             messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+        else: 
+            messagebox.showerror(title="Error", message=f"no details for {website}, make sure you wrote it right")
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
