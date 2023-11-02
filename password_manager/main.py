@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 # Password Generator Project
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
@@ -29,17 +30,26 @@ def add():
     website = w_entry.get()
     username = id_entry.get()
     password = p_entry.get()
+    new_data= {
+        website:{
+            "username/email":username,
+            "password":password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showerror(
             title="oops", message="Please fill all the fields")
     else:
-        with open("password_manager/data.txt", "a") as data_file:
-            data_file.write(f"{website} - {username} - {password}\n")
+        with open("password_manager/data.json", "r") as data_file:
+            data = json.load(data_file)
+            data.update(new_data)
+
+        with open("password_manager/data.json", "w") as data_file:
+            json.dump(data, data_file, indent=4)
             w_entry.delete(0, END)
             p_entry.delete(0, END)
-            messagebox.showinfo(title="DONE", message="info saved")
-
+            
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -51,7 +61,7 @@ logo_pic = PhotoImage(file="password_manager/logo.png")
 canvas.create_image(100, 100, image=logo_pic)
 canvas.grid(row=0, column=1)
 
-# labels
+#labels
 wLabel = Label(text="Website: ")
 wLabel.grid(row=1, column=0)
 
@@ -63,18 +73,20 @@ pLabel.grid(row=3, column=0)
 
 
 # entries --------------------------------------------#
-w_entry = Entry(width=35)                            #
-w_entry.grid(row=1, column=1, columnspan=2)            #
-w_entry.focus()                                      #
-#
-id_entry = Entry(width=35)                           #
-id_entry.grid(row=2, column=1, columnspan=2)         #
+w_entry = Entry(width=35)                             #
+w_entry.grid(row=1, column=1, columnspan=2)           #
+w_entry.focus()                                       #
+                                                      #
+id_entry = Entry(width=35)                            #
+id_entry.grid(row=2, column=1, columnspan=2)          #
 id_entry.insert(0, "yourdefaultemail@gmail.com")      #
-#
-p_entry = Entry(width=25)                            #
+                                                      #
+p_entry = Entry(width=25)                             #
 p_entry.grid(row=3, column=1, columnspan=1)           #
 # ----------------------------------------------------#
 
+
+#buttons
 p_button = Button(text="Generate Password", command=generate_password)
 p_button.grid(row=3, column=2)
 
