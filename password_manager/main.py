@@ -12,7 +12,7 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 def generate_password():
 
-    password_letters = [choice(letters) for _ in range(randint(8, 10))]
+    password_letters = [choice(letters) for _ in range(randint(6, 8))]
     password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
     password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
 
