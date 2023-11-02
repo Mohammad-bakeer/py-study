@@ -41,12 +41,19 @@ def add():
         messagebox.showerror(
             title="oops", message="Please fill all the fields")
     else:
-        with open("password_manager/data.json", "r") as data_file:
-            data = json.load(data_file)
+        try:
+            with open("password_manager/data.json", "r") as data_file:
+                data = json.load(data_file)
+        
+        except FileNotFoundError:
+            with open("password_manager/data.json", "w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+            
+        else:            
             data.update(new_data)
-
-        with open("password_manager/data.json", "w") as data_file:
-            json.dump(data, data_file, indent=4)
+            with open("password_manager/data.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
+        finally:
             w_entry.delete(0, END)
             p_entry.delete(0, END)
             
