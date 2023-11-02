@@ -56,7 +56,16 @@ def add():
         finally:
             w_entry.delete(0, END)
             p_entry.delete(0, END)
-            
+
+# ---------------------------- Search ------------------------------- #            
+def find_password():
+    website = w_entry.get()
+    with open("password_manager/data.json") as data_file:
+        data = json.load(data_file)
+        if website in data:
+            email = data[website]["username/email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -80,20 +89,23 @@ pLabel.grid(row=3, column=0)
 
 
 # entries --------------------------------------------#
-w_entry = Entry(width=35)                             #
-w_entry.grid(row=1, column=1, columnspan=2)           #
+w_entry = Entry(width=21)                             #
+w_entry.grid(row=1, column=1)           #
 w_entry.focus()                                       #
                                                       #
 id_entry = Entry(width=35)                            #
 id_entry.grid(row=2, column=1, columnspan=2)          #
 id_entry.insert(0, "yourdefaultemail@gmail.com")      #
                                                       #
-p_entry = Entry(width=25)                             #
-p_entry.grid(row=3, column=1, columnspan=1)           #
+p_entry = Entry(width=21)                             #
+p_entry.grid(row=3, column=1)           #
 # ----------------------------------------------------#
 
 
 #buttons
+s_button = Button(text="Search", width=13, command=find_password )
+s_button.grid(row=1, column=2)
+
 p_button = Button(text="Generate Password", command=generate_password)
 p_button.grid(row=3, column=2)
 
