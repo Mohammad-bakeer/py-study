@@ -33,13 +33,13 @@ def strat_timer():
 
     if reps %8 == 0:
         timer_label.config(text="break", fg=RED)
-        count_down(3)
+        count_down(long_break)
     elif reps %2 == 0:
         timer_label.config(text="break", fg=PINK)
-        count_down(2)
+        count_down(short_break)
     else:
         timer_label.config(text="work", fg=GREEN)
-        count_down(2)
+        count_down(work_sec)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -65,7 +65,7 @@ window.title("pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-ph = PhotoImage(file="tkinter/tkinter_2/tomato.png")
+ph = PhotoImage(file="tkinter/pomodoro_counter(tk2)/tomato.png")
 canvas.create_image(100, 112, image=ph)
 text_timer = canvas.create_text(
     100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
