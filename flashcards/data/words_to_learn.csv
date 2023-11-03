@@ -1,99 +1,91 @@
-,French,English
-0,partie,part
-1,histoire,history
-2,chercher,search
-3,seulement,only
-4,police,police
-5,pensais,thought
-6,aide,help
-7,demande,request
-8,genre,kind
-9,mois,month
-10,frère,brother
-11,laisser,let
-12,car,because
-13,mettre,to put
-14,laisse,leash
-15,eux,them
-16,ville,city
-17,chaque,each
-18,parlé,speak
-19,arrivé,come
-20,devrait,should
-21,longtemps,long time
-22,heures,hours
-23,vont,will
-24,pendant,while
-25,revoir,meet again
-26,aucune,any
-27,place,square
-28,parle,speak
-29,compris,understood
-30,savais,knew
-31,étaient,were
-32,attention,Warning
-33,voici,here is
-34,pourrais,could
-35,affaire,case
-36,donner,give
-37,type,type
-38,leurs,their
-39,donné,given
-40,train,train
-41,corps,body
-42,endroit,place
-43,yeux,eyes
-44,façon,way
-45,écoute,listen
-46,dont,whose
-47,trouve,find
-48,premier,first
-49,perdu,lost
-50,main,hand
-51,première,first
-52,côté,side
-53,pouvoir,power
-54,vieux,old
-55,sois,be
-56,tiens,here
-57,matin,morning
-58,tellement,so much
-59,enfant,child
-60,point,point
-61,venu,came
-62,suite,after
-63,pardon,sorry
-64,venez,come
-65,devant,in front of
-66,vers,towards
-67,minutes,minutes
-68,demandé,request
-69,chambre,bedroom
-70,mis,placed
-71,droit,law
-72,aimerais,would like to
-73,aujourd'hui,today
-74,mari,husband
-75,cause,cause
-76,enfin,finally
-77,espère,hope
-78,eau,water
-79,attendez,Wait
-80,parti,left
-81,nouvelle,new
-82,boulot,job
-83,arrêter,Stop
-84,dirait,would say
-85,terre,Earth
-86,compte,account
-87,donne,given
-88,loin,far
-89,fin,end
-90,croire,believe
-91,chérie,sweetheart
-92,gros,large
-93,plutôt,rather
-94,aura,will have
-95,filles,girls
-96,jouer,to play
-97,bureau,office
+,Unnamed: 0,French,English
+0,0,partie,part
+1,1,histoire,history
+2,2,chercher,search
+3,3,seulement,only
+4,4,police,police
+5,5,pensais,thought
+6,6,aide,help
+7,7,demande,request
+8,8,genre,kind
+9,9,mois,month
+10,10,frère,brother
+11,11,laisser,let
+12,13,mettre,to put
+13,14,laisse,leash
+14,15,eux,them
+15,17,chaque,each
+16,18,parlé,speak
+17,19,arrivé,come
+18,20,devrait,should
+19,21,longtemps,long time
+20,22,heures,hours
+21,24,pendant,while
+22,25,revoir,meet again
+23,26,aucune,any
+24,27,place,square
+25,28,parle,speak
+26,29,compris,understood
+27,30,savais,knew
+28,32,attention,Warning
+29,33,voici,here is
+30,34,pourrais,could
+31,35,affaire,case
+32,36,donner,give
+33,37,type,type
+34,38,leurs,their
+35,39,donné,given
+36,40,train,train
+37,42,endroit,place
+38,43,yeux,eyes
+39,44,façon,way
+40,45,écoute,listen
+41,46,dont,whose
+42,47,trouve,find
+43,48,premier,first
+44,50,main,hand
+45,51,première,first
+46,52,côté,side
+47,53,pouvoir,power
+48,55,sois,be
+49,56,tiens,here
+50,57,matin,morning
+51,58,tellement,so much
+52,59,enfant,child
+53,60,point,point
+54,61,venu,came
+55,62,suite,after
+56,63,pardon,sorry
+57,64,venez,come
+58,65,devant,in front of
+59,66,vers,towards
+60,67,minutes,minutes
+61,68,demandé,request
+62,69,chambre,bedroom
+63,70,mis,placed
+64,71,droit,law
+65,72,aimerais,would like to
+66,73,aujourd'hui,today
+67,74,mari,husband
+68,75,cause,cause
+69,76,enfin,finally
+70,77,espère,hope
+71,78,eau,water
+72,80,parti,left
+73,81,nouvelle,new
+74,82,boulot,job
+75,83,arrêter,Stop
+76,84,dirait,would say
+77,85,terre,Earth
+78,86,compte,account
+79,87,donne,given
+80,88,loin,far
+81,89,fin,end
+82,90,croire,believe
+83,91,chérie,sweetheart
+84,92,gros,large
+85,93,plutôt,rather
+86,94,aura,will have
+87,95,filles,girls
+88,96,jouer,to play
+89,97,bureau,office
