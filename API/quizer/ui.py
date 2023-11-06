@@ -23,12 +23,12 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
         self.check_image = PhotoImage(file="API/quizer/images/true.png")
-        self.true_button = Button(image=self.check_image, highlightthickness=0)
+        self.true_button = Button(image=self.check_image, highlightthickness=0, command=self.is_true)
         self.true_button.grid(row=2, column=0)
 
         self.cross_image = PhotoImage(file="API/quizer/images/false.png")
         self.false_button = Button(
-            image=self.cross_image, highlightthickness=0)
+            image=self.cross_image, highlightthickness=0, command=self.is_false)
         self.false_button.grid(row=2, column=1)
 
         self.get_next_question()
@@ -39,3 +39,19 @@ class QuizInterface:
     def get_next_question(self):
         qu = self.quiz.next_question()
         self.canvas.itemconfig(self.qc_text, text=qu)
+
+    def is_true(self):
+        x = self.quiz.check_answer("True")            
+        if self.quiz.still_has_questions():
+            self.get_next_question()
+        else:
+            self.canvas.itemconfig(self.qc_text, text="You've completed the quiz")
+
+
+    def is_false(self):
+        x = self.quiz.check_answer("False")
+        if self.quiz.still_has_questions():
+            self.get_next_question()
+        else:
+            self.canvas.itemconfig(self.qc_text, text="You've completed the quiz")
+
