@@ -10,8 +10,8 @@ load_dotenv()
 
 MY_EMAIL= os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORDE")
-MY_LAT = 32.024380
-MY_LONG = 35.841021
+MY_LAT = float(os.getenv("LAT"))
+MY_LONG = float(os.getenv("LON"))
 
 def is_iss_seeable():
     response = requests.get(url="http://api.open-notify.org/iss-now.json")

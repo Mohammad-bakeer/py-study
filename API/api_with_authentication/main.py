@@ -13,8 +13,8 @@ auth_token = os.getenv("AUTH_TOK")
 # https://openweathermap.org/weather-conditions
 
 paramerters = {
-    "lon": 35.945,
-    "lat": 31.9552,
+    "lon": os.getenv("LON"),
+    "lat": os.getenv("LAT"),
     "units": "metric",
     "APPID": API_KEY,
     # "cnt": CNT,
@@ -36,12 +36,14 @@ for i in range(35, 38):
         will_rain = True
 
 if will_rain:
+    receiving_phone = os.getenv("PH_NUM_T")
+    sending_phone = os.getenv("PH_NUM_S")
     client = Client(account_sid, auth_token)
     message = client.messages \
         .create(
             body=f"bring an umbrella, it might rain around {day['dt_txt'].split()[1]}",
-            from_="+12028385541",
-            to="+962796747696"
+            from_=sending_phone,
+            to=receiving_phone
 
         )
     print(message.status)
