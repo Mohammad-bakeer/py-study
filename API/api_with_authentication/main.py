@@ -3,12 +3,12 @@ import requests
 from twilio.rest import Client
 from dotenv import load_dotenv, dotenv_values
 
-
-API_KEY = "3682b529607eb1266bea8e634d30d205"
+load_dotenv()
+API_KEY = os.getenv("API_KEY_")
 # cnt = 5 for today, +8 for each day you want more
 CNT = 5
-account_sid = "AC8ae3b4b5214fc8ad746e4489de9ef5cd"
-auth_token = "7add1ed881b45282e0e691f2c5913fc8"
+account_sid = os.getenv("ACC_SID")
+auth_token = os.getenv("AUTH_TOK")
 # weather condition IDs:
 # https://openweathermap.org/weather-conditions
 
@@ -36,7 +36,6 @@ for i in range(35, 38):
         will_rain = True
 
 if will_rain:
-    print("x")
     client = Client(account_sid, auth_token)
     message = client.messages \
         .create(
