@@ -2,9 +2,14 @@ import requests
 from datetime import datetime
 import smtplib
 import time
+import os
+from dotenv import load_dotenv, dotenv_values
 
-MY_EMAIL= "test.1xm2@gmail.com"
-PASSWORD = "ylqglrmqjxspgenv"
+
+load_dotenv()
+
+MY_EMAIL= os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORDE")
 MY_LAT = 32.024380
 MY_LONG = 35.841021
 
@@ -37,11 +42,11 @@ def is_night():
     if time_now >= sunset or time_now <= sunrise:
         return True 
 
-
+receiving_email = os.getenv("EMAIL2")
 while True:
     time.sleep(60)
     if is_night() and is_iss_seeable():
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=MY_EMAIL,password=PASSWORD)
-            connection.sendmail(from_addr=MY_EMAIL,to_addrs="bakeermohammad11@gmail.com",msg=f"Subject:Look UP\n\nthe ISS is above you in the sky")
+            connection.sendmail(from_addr=MY_EMAIL,to_addrs=receiving_email,msg=f"Subject:Look UP\n\nthe ISS is above you in the sky")
