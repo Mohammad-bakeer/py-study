@@ -3,3 +3,11 @@
 2- pyperclip.copy(), function to copy strings to the clipboard
 
 3- html.unescape(), function to clean strings from html sources 
+
+4- method to slice dictionaries, 
+   import itertools
+   dictionary = {k1:v1, k2,v2, k3:v3, k4,v4}
+   data = dict(itertools.islice(dictionary.items(),2)) #this will slice the dictionary till the second item
+
+   other method is to use list comprehension data_list[(key,value) for (key,value) in dictionary.items()], then slice the list.
+   
