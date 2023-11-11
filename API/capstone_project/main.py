@@ -32,10 +32,10 @@ for destination in sheet_data:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
-    
+    if flight == None:
+        continue
     if flight.price < destination["lowestPrice"]:
         notification_manager.send_message(
             message=f"Low price alert! Only {flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
         )
 
-notification_manager.send_message("hello_test")

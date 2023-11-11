@@ -4,7 +4,11 @@ from dotenv import load_dotenv, dotenv_values
 load_dotenv()
 
 URL_1 = os.getenv("URL_DM")
-
+BEARER = os.environ['Authorization']
+headers = {
+        "Authorization": BEARER,
+        "Content-Type": "application/json",
+    }
 
 
 
@@ -14,7 +18,7 @@ class DataManager:
         self.destination_data = {}
 
     def get_destination_data(self):
-        response = requests.get(url=URL_1)
+        response = requests.get(url=URL_1, headers=headers)
         data = response.json()
         self.destination_data = data["prices"]
         return self.destination_data
@@ -27,5 +31,5 @@ class DataManager:
                 }
             }
             response = requests.put(
-                url=f"{URL_1}/{city['id']}", json=updated_data)
+                url=f"{URL_1}/{city['id']}", json=updated_data, headers=headers)
             
