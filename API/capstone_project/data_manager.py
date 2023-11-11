@@ -4,6 +4,7 @@ from dotenv import load_dotenv, dotenv_values
 load_dotenv()
 
 URL_1 = os.getenv("URL_DM")
+URL_2 = os.getenv("URL_DMU")
 BEARER = os.environ['Authorization']
 headers = {
         "Authorization": BEARER,
@@ -32,4 +33,10 @@ class DataManager:
             }
             response = requests.put(
                 url=f"{URL_1}/{city['id']}", json=updated_data, headers=headers)
+    
+    def get_customer_emails(self):
+        response = requests.get(url=URL_2, headers=headers)
+        data = response.json()
+        self.customer_data = data["users"]
+        return self.customer_data
             

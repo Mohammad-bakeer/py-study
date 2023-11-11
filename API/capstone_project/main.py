@@ -35,9 +35,13 @@ for destination in sheet_data:
     if flight == None:
         continue
     if flight.price < destination["lowestPrice"]:
-        message = f"Low price alert! Only {flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        message = f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city} -{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        
+        users = data_manager.get_customer_emails()
+        emails = [row["email"] for row in users]
+                
         if flight.stop_overs > 0:
             message += f"\nFlight has 1 stop over, via {flight.via_city}."
             
-        notification_manager.send_message(message=message)
+        notification_manager.send_message(message=message, emails=emails)
 
