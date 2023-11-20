@@ -52,14 +52,17 @@ while True:
                  affordable_upgrades[cost] = id
 
         #Purchase the most expensive affordable upgrade
-        highest_price_affordable_upgrade = max(affordable_upgrades)
-        print(highest_price_affordable_upgrade)
-        to_purchase_id = affordable_upgrades[highest_price_affordable_upgrade]
-
-        browser.find_element(By.ID,to_purchase_id).click()
+        try:
+            highest_price_affordable_upgrade = max(affordable_upgrades)
+            print(highest_price_affordable_upgrade)
+            to_purchase_id = affordable_upgrades[highest_price_affordable_upgrade]
+            browser.find_element(By.ID,to_purchase_id).click()
+                
+        except ValueError:
+            pass
         
         #Add another 5 seconds until the next check
-        timeout = time.time() + 7
+        timeout = time.time() + 10
 
     #After 10 minutes stop the bot and check the cookies per second count.
     if time.time() > five_min:
