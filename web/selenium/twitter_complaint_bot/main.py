@@ -2,9 +2,8 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
 load_dotenv()
 
 DWS = 350
