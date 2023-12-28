@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book</title>
 </head>
 <body>
-    <form action="" method="POST">
-        <label>Book Name</label>
-        <input type="text" name="title">
-        <label>Book Author</label>
-        <input type="text" name="author">
-        <label>Rating</label>
-        <input type="text" name="rating">
+    <h1>Add a Book</h1>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <form method="post" action="/add">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" step="0.1" required>
         <button type="submit">Add Book</button>
     </form>
+    <a href="/">Back to Home</a>
 </body>
 </html>

@@ -6,5 +6,9 @@
     "python.analysis.extraPaths": [
         "./snake_game"
     ],
-    "livePreview.defaultPreviewPath": "/web/flask/blog-templating-start/templates/post.html"
+    "livePreview.defaultPreviewPath": "/web/flask/blog-templating-start/templates/post.html",
+    "files.associations": {
+        "cmath": "cpp",
+        "xutility": "cpp"
+    }
 }
