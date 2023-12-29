@@ -4,15 +4,30 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from sqlalchemy.exc import IntegrityError
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+#flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap(app)
-
+####################################################################################
+#db
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///C:/Users/Bakeer/OneDrive/Desktop/course 100D of Py/web/flask/16 28-12-2023/top_movies.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+#####################################################################################
+url = "https://api.themoviedb.org/3/search/movie"
+Auth= os.getenv("KEY")
+
+headers = {
+    "accept": "application/json",
+    "Authorization": Auth
+}
+MOVIE_DB_IMAGE_URL="https://image.tmdb.org/t/p/w500"
 
 class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,7 +53,12 @@ class AddForm(FlaskForm):
 
 @app.route("/")
 def home():
-    all_movies = Movie.query.all()
+    all_movies = Movie.query.order_by(Movie.rating).all()
+    
+    #This line loops through all the movies
+    for i in range(len(all_movies)):
+        all_movies[i].ranking = len(all_movies) - i
+    db.session.commit()
     return render_template("index.html", movies=all_movies)
 
 @app.route('/edit', methods=["GET","POST"])
@@ -61,10 +81,35 @@ def delete_movie():
     db.session.commit()
     return redirect(url_for("home"))
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add_movie():
     form = AddForm()
+    
+    if form.validate_on_submit():
+        movie_title = form.title.data
+        
+        response = requests.get(url=url, params={"query": movie_title},headers=headers)
+        data = response.json()["results"]
+        return render_template("select.html", options=data)
+      
     return render_template("add.html", form=form)
+
+@app.route("/find")
+def find_movie():
+    movie_api_id = request.args.get("id")
+    if movie_api_id:
+        n_url = url+f"/{movie_api_id}"
+        response = requests.get(url=f"https://api.themoviedb.org/3/movie/{movie_api_id}", headers=headers)
+        data = response.json()
+        new_movie = Movie(
+            title=data["title"],
+            year=data["release_date"].split("-")[0],
+            img_url=f"{MOVIE_DB_IMAGE_URL}{data['poster_path']}",
+            description=data["overview"]
+        )
+        db.session.add(new_movie)
+        db.session.commit()
+        return redirect(url_for("edit", id=new_movie.id))
 
 if __name__ == '__main__':
     app.run(debug=True)
