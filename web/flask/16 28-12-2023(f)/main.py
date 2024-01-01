@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap(app)
 ####################################################################################
 #db
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///C:/Users/Bakeer/OneDrive/Desktop/course 100D of Py/web/flask/16 28-12-2023/top_movies.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///C:/Users/Bakeer/OneDrive/Desktop/course 100D of Py/web/flask/16 28-12-2023(f)/top_movies.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 #####################################################################################
@@ -111,7 +111,7 @@ def find_movie():
         db.session.commit()
         return redirect(url_for("edit", id=new_movie.id))
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
+    

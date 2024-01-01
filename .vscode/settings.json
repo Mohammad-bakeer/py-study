@@ -10,5 +10,13 @@
     "files.associations": {
         "cmath": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
 }
