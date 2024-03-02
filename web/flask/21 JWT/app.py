@@ -42,7 +42,7 @@ def token_required(f):
 
 		try:
 			# decoding the payload to fetch the stored details
-			data = jwt.decode(token, app.config['SECRET_KEY'])
+			data = jwt.decode(token, app.config['SECRET_KEY'], algorithms="HS256")
 			print(token)
 			current_user = User.query.filter_by(public_id = data['public_id']).first()
 		except:
@@ -106,7 +106,7 @@ def login():
 		token = jwt.encode({
 			'public_id': user.public_id,
 			'exp' : datetime.utcnow() + timedelta(minutes = 30)
-		}, app.config['SECRET_KEY'])
+		}, app.config['SECRET_KEY'], algorithm="HS256")
 
 		return make_response(jsonify({'token' : token}), 201)
 	# returns 403 if password is wrong
@@ -120,7 +120,7 @@ def login():
 @app.route('/signup', methods =['POST'])
 def signup():
 	# creates a dictionary of the form data
-	db.create_all()
+	
 	data = request.form
 
 	# gets name, email and password
