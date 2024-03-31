@@ -1,3 +1,6 @@
+# Mohammad Bakir   -  2000901044
+# Mohammad Hamdan  -  1900901082
+# Nabil Altarteer  -  2000901018
 import re
 
 # Define token types
@@ -14,15 +17,25 @@ tokens = [
     ('WHITESPACE', r'\s+')
 ]
 
-# Compile regular expressions for token types
+# Regular expression for ignoring comments
+comment_pattern = r'\/\/.*|\"{3}[\s\S]*?\"{3}|#.*|\/\*[\s\S]*?\*\/'
+
+# Compile regular expressions for token types and comments
 patterns = [(name, re.compile(pattern)) for name, pattern in tokens]
+comment_regex = re.compile(comment_pattern)
 
 # Function to tokenize the input program
 def lexer(program):
     tokens = []
     while program:
+        # Skip comments
+        match = comment_regex.match(program)
+        if match:
+            program = program[match.end():]
+            continue
+
         # Skip whitespace
-        match = re.search(r'^\s+', program)
+        match = re.match(r'^\s+', program)
         if match:
             program = program[match.end():]
             continue
@@ -45,9 +58,13 @@ def lexer(program):
 
 # Sample program
 sample_program = """
+//comment
 a = 1  ;
 if   (   a    +    1   )   then   b  =  2  ;
-b = a +5 ;
+b = a +5 ; #commet
+/*
+comment
+*/
 """
 
 # Tokenize the sample program
