@@ -1,6 +1,4 @@
-# Mohammad Bakir   -  2000901044
-# Mohammad Hamdan  -  1900901082
-# Nabil Altarteer  -  2000901018
+
 import re
 
 # Define token types
